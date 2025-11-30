@@ -1284,9 +1284,33 @@
     </div>
 
     <script>
-        // Configuration
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyjMMOnLO2hP_DPvLx3hDTFOq3pH00bH97jnUScdZxWTK06EvFPEVw7x5WT4rTWRQXwUw/exec';
-        
+        // Configuration - UPDATED
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2H5RBzQnf45jGWKpkn1prTE8OEB4EjRy26dmNlN22YgkmwAMMJiIM1AexgX3Oq3fsrg/exec';
+
+// Add this function to debug API calls
+async function testConnection() {
+    try {
+        console.log('Testing connection to Google Apps Script...');
+        const response = await fetch(SCRIPT_URL + '?action=getProducts');
+        const result = await response.json();
+        console.log('Connection test result:', result);
+        return result;
+    } catch (error) {
+        console.error('Connection test failed:', error);
+        return null;
+    }
+}
+
+// Call this on page load to test
+document.addEventListener('DOMContentLoaded', function() {
+    testConnection().then(result => {
+        if (result && result.status === 'success') {
+            console.log('✅ Connected successfully to Google Sheets');
+        } else {
+            console.error('❌ Failed to connect to Google Sheets');
+        }
+    });
+});
         // Global variables
         let products = [];
         let orders = [];
