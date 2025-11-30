@@ -1777,24 +1777,29 @@
     // Submit Order
     async function submitOrder(orderData) {
         try {
-            const params = new URLSearchParams({
-                action: 'submitOrder',
-                orderId: orderData.orderId,
-                customerName: orderData.customerName,
-                email: orderData.email,
-                phone: orderData.phone,
-                address: orderData.address,
-                products: orderData.products,
-                total: orderData.total,
-                status: orderData.status
-            });
+            const formData = new URLSearchParams();
+            formData.append('action', 'submitOrder');
+            formData.append('orderId', orderData.orderId);
+            formData.append('customerName', orderData.customerName);
+            formData.append('email', orderData.email);
+            formData.append('phone', orderData.phone);
+            formData.append('address', orderData.address);
+            formData.append('products', orderData.products);
+            formData.append('total', orderData.total);
+            formData.append('status', orderData.status);
 
-            const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
+            const url = GOOGLE_SCRIPT_URL;
             
             console.log('Submitting order to:', url);
+            console.log('Order data:', orderData);
             
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'POST',
+                body: formData
+            });
+            
             const result = await response.json();
+            console.log('Order submission response:', result);
 
             if (result.status === 'success') {
                 return {
