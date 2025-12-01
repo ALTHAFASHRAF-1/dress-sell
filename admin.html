@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fashion Store Admin Panel - Manage Products and Orders">
     <title>Admin Panel - Fashion Store</title>
+    
+    <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-   <style>
+    <style>
         :root {
             --primary-color: #667eea;
             --secondary-color: #764ba2;
@@ -46,7 +49,7 @@
             font-size: 0.9rem;
         }
 
-        /* Navigation Styles - HAMBURGER MENU */
+        /* Navigation Styles */
         .navbar {
             background: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -100,12 +103,10 @@
             letter-spacing: 0.5px;
         }
 
-        /* Hide desktop menu - show only hamburger */
         .nav-menu {
             display: none;
         }
 
-        /* Hamburger Menu Button - Always Visible */
         .mobile-menu-btn {
             display: flex;
             flex-direction: column;
@@ -133,7 +134,6 @@
             background-color: var(--primary-color);
         }
 
-        /* Hamburger animation when active */
         .mobile-menu-btn.active span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
         }
@@ -146,7 +146,6 @@
             transform: translateY(-9px) rotate(-45deg);
         }
 
-        /* Dropdown Menu */
         .mobile-nav {
             display: none;
             position: absolute;
@@ -392,6 +391,8 @@
             width: 100%;
             height: 100%;
             cursor: pointer;
+            top: 0;
+            left: 0;
         }
 
         .file-upload-content {
@@ -520,7 +521,7 @@
             padding-top: 1.5rem;
             border-top: 1px solid var(--gray-200);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -591,6 +592,13 @@
             color: #991b1b;
             border: 1px solid var(--error-color);
             box-shadow: 0 1px 4px rgba(220, 53, 69, 0.2);
+        }
+
+        .validation-error {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            border: 1px solid var(--warning-color);
+            box-shadow: 0 1px 4px rgba(245, 158, 11, 0.2);
         }
 
         /* Data Management Styles */
@@ -825,6 +833,51 @@
             color: var(--gray-800);
         }
 
+        /* Order Item Styles */
+        .order-items-list {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 6px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--gray-200);
+        }
+
+        .order-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .order-item-details {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .order-item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -833,26 +886,6 @@
         @keyframes slideIn {
             from { transform: translateY(-30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Back to Store */
-        .back-to-store {
-            background: transparent;
-            color: var(--gray-700);
-            padding: 0.875rem 1.25rem;
-            text-decoration: none;
-            border-radius: 0;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            display: block;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--gray-100);
-        }
-
-        .back-to-store:hover {
-            background: var(--gray-50);
-            color: var(--primary-color);
-            padding-left: 1.5rem;
         }
 
         /* Responsive Design */
@@ -971,8 +1004,6 @@
             }
         }
     </style>
-
-
 </head>
 
 <body>
@@ -986,31 +1017,11 @@
                 </div>
             </div>
             
-            <!-- Right-aligned navigation menu -->
-            <div class="nav-menu">
-                <a href="#" data-tab="dashboard" class="nav-link active">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-                <a href="#" data-tab="addProduct" class="nav-link">
-                    <i class="fas fa-plus-circle"></i> Add Product
-                </a>
-                <a href="#" data-tab="manageProducts" class="nav-link">
-                    <i class="fas fa-boxes"></i> Manage Products
-                </a>
-                <a href="#" data-tab="orders" class="nav-link">
-                    <i class="fas fa-shopping-cart"></i> Orders
-                </a>
-                <a href="index.html" class="back-to-store">
-                    <i class="fas fa-store"></i> Back to Store
-                </a>
-            </div>
-
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
         <div class="mobile-nav" id="mobile-nav">
@@ -1036,22 +1047,26 @@
     <div id="dashboard-tab" class="tab-content active">
         <div class="data-wrapper">
             <div class="data-container">
-                <div class="data-stats" id="data-stats">
+                <div class="data-stats" id="dashboard-stats">
                     <div class="stat-card">
-                        <div class="stat-number" id="total-products">0</div>
+                        <div class="stat-number" id="dash-total-products">0</div>
                         <div class="stat-label">Total Products</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number" id="total-orders">0</div>
+                        <div class="stat-number" id="dash-men-products">0</div>
+                        <div class="stat-label">Men's Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="dash-women-products">0</div>
+                        <div class="stat-label">Women's Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="dash-kids-products">0</div>
+                        <div class="stat-label">Kids' Products</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--success-color);">
+                        <div class="stat-number" id="dash-total-orders" style="color: var(--success-color);">0</div>
                         <div class="stat-label">Total Orders</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="total-revenue">$0</div>
-                        <div class="stat-label">Total Revenue</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="pending-orders">0</div>
-                        <div class="stat-label">Pending Orders</div>
                     </div>
                 </div>
 
@@ -1077,8 +1092,13 @@
     <!-- Add Product Tab Content -->
     <div id="addProduct-tab" class="tab-content">
         <div class="form-wrapper">
+            <div class="form-header">
+                <h1>Add New Product</h1>
+                <p>Fill in the details below to add a new product to your store</p>
+            </div>
             <div class="form-container">
                 <form id="product-form">
+                    <!-- Product Information Section -->
                     <div class="form-section">
                         <h2 class="section-title"><i class="fas fa-info-circle"></i> Product Information</h2>
 
@@ -1105,7 +1125,7 @@
                                 <input type="number" id="product_price" name="price" step="0.01" required placeholder="0.00">
                             </div>
                             <div class="form-group">
-                                <label for="product_original_price">Original Price ($)</label>
+                                <label for="product_original_price">Original Price ($) <span class="optional">(Optional)</span></label>
                                 <input type="number" id="product_original_price" name="originalPrice" step="0.01" placeholder="0.00">
                             </div>
                         </div>
@@ -1119,7 +1139,7 @@
 
                         <div class="form-row two-cols">
                             <div class="form-group">
-                                <label for="product_badge">Badge</label>
+                                <label for="product_badge">Badge <span class="optional">(Optional)</span></label>
                                 <select id="product_badge" name="badge">
                                     <option value="">No Badge</option>
                                     <option value="Sale">Sale</option>
@@ -1186,6 +1206,11 @@
                             <strong><i class="fas fa-exclamation-triangle"></i> Error!</strong>
                             <span id="error-text">There was an error adding the product.</span>
                         </div>
+
+                        <div class="message validation-error" id="validation-error">
+                            <strong><i class="fas fa-exclamation-triangle"></i> Validation Error!</strong>
+                            Please fill in all required fields before submitting.
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1196,6 +1221,30 @@
     <div id="manageProducts-tab" class="tab-content">
         <div class="data-wrapper">
             <div class="data-container">
+                <div class="data-stats" id="manage-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-products">0</div>
+                        <div class="stat-label">Total Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="men-products">0</div>
+                        <div class="stat-label">Men's Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="women-products">0</div>
+                        <div class="stat-label">Women's Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="kids-products">0</div>
+                        <div class="stat-label">Kids' Products</div>
+                    </div>
+                </div>
+
+                <div class="loading-spinner" id="data-loading">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p>Loading products...</p>
+                </div>
+
                 <div class="data-table-container" id="data-table-container" style="display: none;">
                     <table class="data-table" id="data-table">
                         <thead>
@@ -1206,22 +1255,17 @@
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Original Price</th>
+                                <th>Description</th>
                                 <th>Badge</th>
                                 <th>Rating</th>
                                 <th>Reviews</th>
                                 <th>Stock</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="data-table-body">
                         </tbody>
                     </table>
-                </div>
-
-                <div class="loading-spinner" id="data-loading">
-                    <i class="fas fa-spinner fa-spin fa-2x"></i>
-                    <p>Loading products...</p>
                 </div>
 
                 <div class="no-data" id="no-data" style="display: none;">
@@ -1236,6 +1280,31 @@
     <div id="orders-tab" class="tab-content">
         <div class="data-wrapper">
             <div class="data-container">
+                <div class="data-stats" id="orders-stats">
+                    <div class="stat-card" style="border-left-color: var(--success-color);">
+                        <div class="stat-number" id="total-orders" style="color: var(--success-color);">0</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--warning-color);">
+                        <div class="stat-number" id="total-revenue" style="color: var(--warning-color);">$0</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--primary-color);">
+                        <div class="stat-number" id="total-items" style="color: var(--primary-color);">0</div>
+                        <div class="stat-label">Items Sold</div>
+                    </div>
+                </div>
+                
+                <div class="loading-spinner" id="orders-loading">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p>Loading orders...</p>
+                </div>
+
+                <div class="no-data" id="no-orders" style="display: none;">
+                    <i class="fas fa-shopping-cart fa-2x" style="color: var(--gray-400); margin-bottom: 0.75rem;"></i>
+                    <p>No orders found yet. Orders will appear here when customers make purchases.</p>
+                </div>
+
                 <div class="data-table-container" id="orders-table-container" style="display: none;">
                     <table class="data-table" id="orders-table">
                         <thead>
@@ -1244,8 +1313,8 @@
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Address</th>
                                 <th>Total</th>
-                                <th>Status</th>
                                 <th>Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -1254,25 +1323,15 @@
                         </tbody>
                     </table>
                 </div>
-
-                <div class="loading-spinner" id="orders-loading">
-                    <i class="fas fa-spinner fa-spin fa-2x"></i>
-                    <p>Loading orders...</p>
-                </div>
-
-                <div class="no-data" id="no-orders" style="display: none;">
-                    <i class="fas fa-shopping-cart fa-2x" style="color: var(--gray-400); margin-bottom: 0.75rem;"></i>
-                    <p>No orders found.</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal for editing product -->
+    <!-- Modal for viewing/editing product details -->
     <div class="modal" id="product-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="modal-title">Edit Product</h2>
+                <h2 class="modal-title" id="modal-title">Product Details</h2>
                 <button class="close-modal" onclick="closeModal()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1284,19 +1343,18 @@
     </div>
 
     <script>
-        // Configuration
+        // Configuration - UPDATE THESE WITH YOUR ACTUAL URLS
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbxP0c4eI1KvjrFYazyaqXTOpxF2X0tLuPuDtCmbczOA1V2yMs8aWMc115GMQNA8WIcA/exec';
-        const PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRuxfN3pkRvY7gU6w474iyADXj69wz4jVQI0qWMFqqJe0lmKBqSe8Z5yIwNZ5wnPmq_MNWaIjIWE6vo/pub?gid=0&single=true&output=csv';
+        const PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRuxfN3pkRvY7gU6w474iyADXj69wz4jVQI0qWMFqqJe0lmKBqSe8Z5yIwNZ5wnPmq_MNWaIjIWE6vo/pub?gid=512772452&single=true&output=csv';
         const ORDERS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRuxfN3pkRvY7gU6w474iyADXj69wz4jVQI0qWMFqqJe0lmKBqSe8Z5yIwNZ5wnPmq_MNWaIjIWE6vo/pub?gid=1214934860&single=true&output=csv';
         
         // Global variables
-        let products = [];
-        let orders = [];
+        let productsData = [];
+        let ordersData = [];
         let uploadedFiles = {
             product: null,
             'edit-product': null
         };
-        let autoRefreshInterval;
 
         // File upload handling functions
         function handleDragOver(event) {
@@ -1336,6 +1394,8 @@
             const file = event.target.files[0];
             if (!file) return;
 
+            console.log(`File selected for ${type}:`, file.name);
+
             if (!validateFile(file, type)) {
                 return;
             }
@@ -1346,7 +1406,7 @@
 
         function validateFile(file, type) {
             const maxSize = 10 * 1024 * 1024; // 10MB
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 
             if (file.size > maxSize) {
                 alert('File size too large. Maximum size is 10MB.');
@@ -1354,7 +1414,7 @@
             }
 
             if (!allowedTypes.includes(file.type)) {
-                alert('Invalid file type. Please select a valid image (JPG, PNG, GIF).');
+                alert('Invalid file type. Please select a valid image (JPG, PNG, GIF, WEBP).');
                 return false;
             }
 
@@ -1362,10 +1422,17 @@
         }
 
         function showFilePreview(file, type) {
+            console.log(`Showing preview for ${type}:`, file.name);
+            
             const previewId = `${type}-preview`;
             const preview = document.getElementById(previewId);
+            if (!preview) {
+                console.error(`Preview element not found for type: ${type}, looking for ID: ${previewId}`);
+                return;
+            }
+            
             preview.classList.add('active');
-
+            
             const fileSize = (file.size / 1024 / 1024).toFixed(2);
             
             preview.innerHTML = `
@@ -1419,123 +1486,109 @@
         }
 
         async function uploadFile(file, type) {
-    console.log(`Starting upload for ${type}`, file.name);
-    
-    const progressId = `${type}-progress`;
-    const progressFillId = `${type}-progress-fill`;
-    const progressTextId = `${type}-progress-text`;
-    
-    const progress = document.getElementById(progressId);
-    const progressFill = document.getElementById(progressFillId);
-    const progressText = document.getElementById(progressTextId);
-    
-    if (!progress || !progressFill || !progressText) {
-        console.error(`Progress elements not found for type: ${type}`);
-        return;
-    }
-    
-    progress.classList.add('active');
-    progressText.textContent = 'Uploading...';
-    progressFill.style.width = '0%';
-
-    try {
-        console.log(`Starting upload for ${type} file:`, file.name, file.type, file.size);
-
-        // Convert file to base64 for Google Apps Script
-        const base64Data = await fileToBase64(file);
-        
-        // Create form data with base64 content
-        const formData = new FormData();
-        formData.append('action', 'upload');
-        formData.append('type', 'product'); // Always use 'product' for dress market
-        formData.append('fileName', file.name);
-        formData.append('fileType', file.type);
-        formData.append('fileSize', file.size);
-        formData.append('fileData', base64Data);
-
-        // Simulate progress
-        let progressValue = 0;
-        const progressInterval = setInterval(() => {
-            progressValue += Math.random() * 15;
-            if (progressValue > 90) {
-                clearInterval(progressInterval);
-                progressValue = 90;
-            }
-            progressFill.style.width = progressValue + '%';
-        }, 200);
-
-        // Upload to Google Script
-        const response = await fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: formData
-        });
-
-        clearInterval(progressInterval);
-
-        if (response.ok) {
-            const result = await response.json();
-            console.log(`Upload result for ${type}:`, result);
+            console.log(`Starting upload for ${type}`, file.name);
             
-            if (result.status === 'success') {
-                const driveUrl = result.fileUrl || result.viewUrl;
-                
-                const hiddenInputId = getHiddenInputId(type);
-                const hiddenInput = document.getElementById(hiddenInputId);
-                if (hiddenInput) {
-                    hiddenInput.value = driveUrl;
-                    console.log(`Set ${hiddenInputId} to:`, driveUrl);
-                }
-                
-                // Update global uploadedFiles object
-                uploadedFiles[type] = {
-                    file: file,
-                    url: driveUrl,
-                    fileId: result.fileId
-                };
+            const progressId = `${type}-progress`;
+            const progressFillId = `${type}-progress-fill`;
+            const progressTextId = `${type}-progress-text`;
+            
+            const progress = document.getElementById(progressId);
+            const progressFill = document.getElementById(progressFillId);
+            const progressText = document.getElementById(progressTextId);
+            
+            if (!progress || !progressFill || !progressText) {
+                console.error(`Progress elements not found for type: ${type}`);
+                return;
+            }
+            
+            progress.classList.add('active');
+            progressText.textContent = 'Uploading...';
+            progressFill.style.width = '0%';
 
-                progressFill.style.width = '100%';
-                progressText.textContent = 'Upload complete!';
+            try {
+                console.log(`Starting upload for ${type} file:`, file.name, file.type, file.size);
+
+                const base64Data = await fileToBase64(file);
                 
-                console.log(`${type} file uploaded successfully:`, driveUrl);
+                const formData = new FormData();
+                formData.append('action', 'upload');
+                formData.append('type', 'product');
+                formData.append('fileName', file.name);
+                formData.append('fileType', file.type);
+                formData.append('fileSize', file.size);
+                formData.append('fileData', base64Data);
+
+                let progressValue = 0;
+                const progressInterval = setInterval(() => {
+                    progressValue += Math.random() * 15;
+                    if (progressValue > 90) {
+                        clearInterval(progressInterval);
+                        progressValue = 90;
+                    }
+                    progressFill.style.width = progressValue + '%';
+                }, 200);
+
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                clearInterval(progressInterval);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log(`Upload result for ${type}:`, result);
+                    
+                    if (result.status === 'success') {
+                        const driveUrl = result.fileUrl;
+                        
+                        const hiddenInputId = getHiddenInputId(type);
+                        const hiddenInput = document.getElementById(hiddenInputId);
+                        if (hiddenInput) {
+                            hiddenInput.value = driveUrl;
+                            console.log(`Set ${hiddenInputId} to:`, driveUrl);
+                        }
+                        
+                        uploadedFiles[type] = {
+                            file: file,
+                            url: driveUrl,
+                            fileId: result.fileId
+                        };
+
+                        progressFill.style.width = '100%';
+                        progressText.textContent = 'Upload complete!';
+                        
+                        console.log(`${type} file uploaded successfully:`, driveUrl);
+                        
+                        setTimeout(() => {
+                            progress.classList.remove('active');
+                        }, 2000);
+
+                    } else {
+                        throw new Error(result.message || 'Upload failed');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText}`);
+                }
+
+            } catch (error) {
+                console.error(`Upload error for ${type}:`, error);
+                progressText.textContent = 'Upload failed: ' + error.message;
+                progressFill.style.width = '0%';
                 
                 setTimeout(() => {
                     progress.classList.remove('active');
-                }, 2000);
-
-            } else {
-                throw new Error(result.message || 'Upload failed');
+                }, 3000);
             }
-        } else {
-            const errorText = await response.text();
-            throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText}`);
         }
-
-    } catch (error) {
-        console.error(`Upload error for ${type}:`, error);
-        progressText.textContent = 'Upload failed: ' + error.message;
-        progressFill.style.width = '0%';
-        
-        setTimeout(() => {
-            progress.classList.remove('active');
-        }, 3000);
-        
-        // Show error alert
-        alert(`Upload failed: ${error.message}`);
-    }
-}
 
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onload = () => {
-                    const dataUrl = reader.result;
-                    resolve(dataUrl);
-                };
-                reader.onerror = error => {
-                    console.error('FileReader error:', error);
-                    reject(error);
-                };
                 reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
             });
         }
 
@@ -1559,14 +1612,16 @@
             });
 
             if (tabName === 'dashboard') {
-                loadDashboardStats();
+                loadDashboardData();
             } else if (tabName === 'manageProducts') {
-                loadProducts();
+                loadProductsData();
             } else if (tabName === 'orders') {
-                loadOrders();
+                loadOrdersData();
             }
 
             document.getElementById('mobile-nav').classList.remove('active');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (menuBtn) menuBtn.classList.remove('active');
         }
 
         // Mobile menu toggle
@@ -1587,66 +1642,275 @@
                 });
             });
 
-            loadDashboardStats();
-            initializeProductForm();
-            
-            // Start auto-refresh every 30 seconds
-            autoRefreshInterval = setInterval(() => {
-                if (document.getElementById('dashboard-tab').classList.contains('active')) {
-                    loadDashboardStats();
-                } else if (document.getElementById('manageProducts-tab').classList.contains('active')) {
-                    loadProducts();
-                } else if (document.getElementById('orders-tab').classList.contains('active')) {
-                    loadOrders();
-                }
-            }, 30000);
+            initializeForm();
+            loadDashboardData();
         });
 
-        // Load Dashboard Statistics
-        async function loadDashboardStats() {
+        function initializeForm() {
+            const form = document.getElementById('product-form');
+            form.addEventListener('submit', handleFormSubmission);
+
+            document.querySelectorAll('input, textarea, select').forEach((field) => {
+                field.addEventListener('blur', function () {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.classList.add('error');
+                    } else {
+                        this.classList.remove('error');
+                    }
+                });
+
+                field.addEventListener('input', function () {
+                    if (this.classList.contains('error') && this.value.trim()) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+            console.log('Form initialized and ready for submission');
+        }
+
+        async function handleFormSubmission(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const loadingState = document.getElementById('loading-state');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const validationError = document.getElementById('validation-error');
+
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            validationError.style.display = 'none';
+
+            console.log('Form submission started...');
+
+            if (!validateForm()) {
+                console.log('Validation failed');
+                validationError.style.display = 'block';
+                validationError.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            submitBtn.disabled = true;
+            loadingState.style.display = 'block';
+
             try {
-                // Load products and orders from CSV
-                await loadProductsFromCSV();
-                await loadOrdersFromCSV();
+                const data = {
+                    action: 'submit'
+                };
 
-                // Calculate statistics
-                const totalProducts = products.length;
-                const totalOrders = orders.length;
-                const totalRevenue = orders.reduce((sum, order) => sum + parseFloat(order.Total || 0), 0);
-                const pendingOrders = orders.filter(order => order.Status === 'Pending').length;
+                const formElements = e.target.elements;
+                for (let element of formElements) {
+                    if (element.name && element.type !== 'file') {
+                        data[element.name] = String(element.value || '').trim();
+                    }
+                }
 
-                document.getElementById('total-products').textContent = totalProducts;
-                document.getElementById('total-orders').textContent = totalOrders;
-                document.getElementById('total-revenue').textContent = '$' + totalRevenue.toFixed(2);
-                document.getElementById('pending-orders').textContent = pendingOrders;
+                const imageUrl = document.getElementById('product_image_url').value;
+
+                if (imageUrl) {
+                    data.imageUrl = imageUrl;
+                } else {
+                    data.imageUrl = '';
+                }
+
+                console.log('Submitting data:', data);
+
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(data).toString()
+                });
+
+                console.log('Response status:', response.status);
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Response result:', result);
+                    
+                    if (result.status === 'success') {
+                        loadingState.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                        
+                        setTimeout(() => {
+                            clearForm();
+                            if (document.getElementById('manageProducts-tab').classList.contains('active')) {
+                                loadProductsData();
+                            }
+                            if (document.getElementById('dashboard-tab').classList.contains('active')) {
+                                loadDashboardData();
+                            }
+                        }, 2000);
+                    } else {
+                        throw new Error(result.message || 'Submission failed');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText}`);
+                }
+
             } catch (error) {
-                console.error('Error loading dashboard stats:', error);
+                console.error('Submission error:', error);
+                loadingState.style.display = 'none';
+                
+                document.getElementById('error-text').textContent = 
+                    `Submission failed: ${error.message}. Please check your internet connection and try again.`;
+                errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+            } finally {
+                submitBtn.disabled = false;
             }
         }
 
-        // Load products from CSV
-        async function loadProductsFromCSV() {
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('input[required], textarea[required], select[required]');
+            let isValid = true;
+            const missingFields = [];
+
+            document.querySelectorAll('.error').forEach(field => {
+                field.classList.remove('error');
+            });
+
+            requiredFields.forEach((field) => {
+                let fieldValue = '';
+                
+                if (field.type === 'file') {
+                    const fieldName = field.name;
+                    if (fieldName === 'image') {
+                        const hiddenUrl = document.getElementById('product_image_url').value;
+                        const hasFile = field.files.length > 0;
+                        if (!hasFile && !hiddenUrl) {
+                            field.classList.add('error');
+                            missingFields.push('Product Image');
+                            isValid = false;
+                        }
+                    }
+                } else {
+                    fieldValue = String(field.value || '').trim();
+                    if (!fieldValue) {
+                        field.classList.add('error');
+                        missingFields.push(field.name || field.id);
+                        isValid = false;
+                    }
+                }
+            });
+
+            if (!isValid) {
+                console.log('Validation failed. Missing fields:', missingFields);
+            }
+
+            return isValid;
+        }
+
+        function clearForm() {
+            const form = document.getElementById('product-form');
+            form.reset();
+            
+            document.getElementById('product_stock').value = '100';
+            document.getElementById('product_rating').value = '4.5';
+            document.getElementById('product_reviews').value = '100';
+            
+            document.querySelectorAll('.error').forEach(field => {
+                field.classList.remove('error');
+            });
+
+            document.querySelectorAll('.message').forEach(msg => {
+                msg.style.display = 'none';
+            });
+
+            removeFile('product');
+
+            console.log('Form cleared');
+        }
+
+        // Dashboard data loading
+        async function loadDashboardData() {
             try {
+                console.log('Loading dashboard data...');
+                
+                // Load products data
+                const productsResponse = await fetch(PRODUCTS_CSV_URL);
+                if (!productsResponse.ok) {
+                    throw new Error(`HTTP ${productsResponse.status}: ${productsResponse.statusText}`);
+                }
+                const productsCsvText = await productsResponse.text();
+                productsData = parseCSV(productsCsvText);
+                
+                // Load orders data
+                const ordersResponse = await fetch(ORDERS_CSV_URL);
+                if (!ordersResponse.ok) {
+                    throw new Error(`HTTP ${ordersResponse.status}: ${ordersResponse.statusText}`);
+                }
+                const ordersCsvText = await ordersResponse.text();
+                ordersData = parseCSV(ordersCsvText);
+
+                updateDashboardStats();
+
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        function updateDashboardStats() {
+            const totalProducts = productsData.length;
+            const menProducts = productsData.filter(p => p.category === 'men').length;
+            const womenProducts = productsData.filter(p => p.category === 'women').length;
+            const kidsProducts = productsData.filter(p => p.category === 'kids').length;
+            const totalOrders = ordersData.length;
+
+            document.getElementById('dash-total-products').textContent = totalProducts;
+            document.getElementById('dash-men-products').textContent = menProducts;
+            document.getElementById('dash-women-products').textContent = womenProducts;
+            document.getElementById('dash-kids-products').textContent = kidsProducts;
+            document.getElementById('dash-total-orders').textContent = totalOrders;
+        }
+
+        // Data management functions
+        async function loadProductsData() {
+            const loading = document.getElementById('data-loading');
+            const tableContainer = document.getElementById('data-table-container');
+            const noData = document.getElementById('no-data');
+
+            try {
+                loading.classList.add('active');
+                tableContainer.style.display = 'none';
+                noData.style.display = 'none';
+
+                console.log('Fetching data from:', PRODUCTS_CSV_URL);
+                
                 const response = await fetch(PRODUCTS_CSV_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
                 const csvText = await response.text();
-                products = parseCSV(csvText);
+                console.log('CSV data received, length:', csvText.length);
+                
+                productsData = parseCSV(csvText);
+                
+                console.log('Parsed products:', productsData.length);
+
+                if (productsData.length === 0) {
+                    noData.style.display = 'block';
+                } else {
+                    updateDataStats();
+                    renderDataTable();
+                    tableContainer.style.display = 'block';
+                }
+
             } catch (error) {
-                console.error('Error loading products from CSV:', error);
+                console.error('Error loading data:', error);
+                noData.style.display = 'block';
+                document.querySelector('#no-data p').textContent = 
+                    `Error loading data: ${error.message}. Please check your connection and try again.`;
+            } finally {
+                loading.classList.remove('active');
             }
         }
 
-        // Load orders from CSV
-        async function loadOrdersFromCSV() {
-            try {
-                const response = await fetch(ORDERS_CSV_URL);
-                const csvText = await response.text();
-                orders = parseCSV(csvText);
-            } catch (error) {
-                console.error('Error loading orders from CSV:', error);
-            }
-        }
-
-        // Parse CSV function
         function parseCSV(csvText) {
             const lines = csvText.trim().split('\n');
             if (lines.length < 2) return [];
@@ -1668,7 +1932,6 @@
             return data;
         }
 
-        // Helper function to parse CSV line with proper comma handling
         function parseCSVLine(line) {
             const result = [];
             let current = '';
@@ -1691,177 +1954,42 @@
             return result;
         }
 
-        // Initialize product form
-        function initializeProductForm() {
-            const form = document.getElementById('product-form');
-            form.addEventListener('submit', handleProductSubmit);
+        function updateDataStats() {
+            const totalProducts = productsData.length;
+            const menProducts = productsData.filter(p => p.category === 'men').length;
+            const womenProducts = productsData.filter(p => p.category === 'women').length;
+            const kidsProducts = productsData.filter(p => p.category === 'kids').length;
+
+            document.getElementById('total-products').textContent = totalProducts;
+            document.getElementById('men-products').textContent = menProducts;
+            document.getElementById('women-products').textContent = womenProducts;
+            document.getElementById('kids-products').textContent = kidsProducts;
         }
 
-        // Handle product form submission
-        async function handleProductSubmit(e) {
-            e.preventDefault();
-
-            const submitBtn = document.getElementById('submit-btn');
-            const loadingState = document.getElementById('loading-state');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-
-            if (!validateProductForm()) {
-                errorMessage.textContent = 'Please fill in all required fields and upload an image.';
-                errorMessage.style.display = 'block';
-                return;
-            }
-
-            submitBtn.disabled = true;
-            loadingState.style.display = 'block';
-
-            try {
-                const formData = new FormData(e.target);
-                const productData = Object.fromEntries(formData);
-
-                // Use uploaded image URL
-                const imageUrl = document.getElementById('product_image_url').value;
-                
-                if (imageUrl) {
-                    productData.imageUrl = imageUrl;
-                }
-
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({
-                        action: 'addProduct',
-                        ...productData
-                    }).toString()
-                });
-
-                const result = await response.json();
-
-                if (result.status === 'success') {
-                    loadingState.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    e.target.reset();
-                    removeFile('product');
-                    
-                    // Refresh data
-                    loadDashboardStats();
-                    if (document.getElementById('manageProducts-tab').classList.contains('active')) {
-                        loadProducts();
-                    }
-                    
-                    // Hide success message after 3 seconds
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 3000);
-                } else {
-                    throw new Error(result.message);
-                }
-
-            } catch (error) {
-                console.error('Error adding product:', error);
-                loadingState.style.display = 'none';
-                document.getElementById('error-text').textContent = error.message;
-                errorMessage.style.display = 'block';
-            } finally {
-                submitBtn.disabled = false;
-            }
-        }
-
-        function validateProductForm() {
-    const form = document.getElementById('product-form');
-    const requiredFields = form.querySelectorAll('input[required], textarea[required], select[required]');
-    let isValid = true;
-
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            field.classList.add('error');
-            isValid = false;
-        } else {
-            field.classList.remove('error');
-        }
-    });
-
-    // Check if image is uploaded
-    const imageUrl = document.getElementById('product_image_url').value;
-    const imageInput = document.getElementById('product_image');
-    if (!imageUrl && (!imageInput.files || imageInput.files.length === 0)) {
-        alert('Please upload a product image.');
-        isValid = false;
-    } else if (imageUrl) {
-        console.log('Image URL already exists:', imageUrl);
-    }
-
-    return isValid;
-}
-
-        // Load products for management
-        async function loadProducts() {
-            const loading = document.getElementById('data-loading');
-            const tableContainer = document.getElementById('data-table-container');
-            const noData = document.getElementById('no-data');
-
-            try {
-                loading.classList.add('active');
-                tableContainer.style.display = 'none';
-                noData.style.display = 'none';
-
-                await loadProductsFromCSV();
-
-                if (products.length === 0) {
-                    noData.style.display = 'block';
-                } else {
-                    renderProductsTable();
-                    tableContainer.style.display = 'block';
-                }
-
-            } catch (error) {
-                console.error('Error loading products:', error);
-                noData.style.display = 'block';
-                document.querySelector('#no-data p').textContent = 'Error loading products: ' + error.message;
-            } finally {
-                loading.classList.remove('active');
-            }
-        }
-
-        // Render products table
-        function renderProductsTable() {
+        function renderDataTable() {
             const tbody = document.getElementById('data-table-body');
             tbody.innerHTML = '';
 
-            products.forEach((product, index) => {
+            productsData.forEach((product, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${product.ID}</td>
-                    <td>
-                        <img src="${product.Image}" alt="${product.Name}" 
-                             style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
-                    </td>
-                    <td class="truncate-text">${product.Name}</td>
-                    <td>${product.Category}</td>
-                    <td>$${parseFloat(product.Price).toFixed(2)}</td>
-                    <td>${product.OriginalPrice ? '$' + parseFloat(product.OriginalPrice).toFixed(2) : '-'}</td>
-                    <td>${product.Badge || '-'}</td>
-                    <td>${product.Rating} ★</td>
-                    <td>${product.Reviews}</td>
-                    <td>${product.Stock}</td>
-                    <td>
-                        <span style="padding: 3px 6px; border-radius: 3px; font-size: 11px; 
-                              background: ${product.Status === 'Active' ? 'var(--success-color)' : 'var(--gray-600)'}; 
-                              color: white;">
-                            ${product.Status}
-                        </span>
-                    </td>
+                    <td>${index + 1}</td>
+                    <td>${product.imageUrl ? `<img src="${product.imageUrl}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">` : 'N/A'}</td>
+                    <td class="truncate-text" title="${product.name || 'N/A'}">${product.name || 'N/A'}</td>
+                    <td>${product.category || 'N/A'}</td>
+                    <td>$${product.price || '0.00'}</td>
+                    <td>${product.originalPrice ? '$' + product.originalPrice : 'N/A'}</td>
+                    <td class="truncate-text" title="${product.description || 'N/A'}">${product.description ? product.description.substring(0, 50) + '...' : 'N/A'}</td>
+                    <td>${product.badge || 'N/A'}</td>
+                    <td>${product.rating || 'N/A'} ★</td>
+                    <td>${product.reviews || 'N/A'}</td>
+                    <td>${product.stock || 'N/A'}</td>
                     <td class="actions">
+                        <button class="action-icon view" onclick="viewProduct(${index})" title="View Details">
+                            <i class="fas fa-eye"></i>
+                        </button>
                         <button class="action-icon edit" onclick="editProduct(${index})" title="Edit">
                             <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="action-icon delete" onclick="deleteProduct(${product.ID})" title="Delete">
-                            <i class="fas fa-trash"></i>
                         </button>
                     </td>
                 `;
@@ -1869,9 +1997,42 @@
             });
         }
 
-        // Edit product
+        function viewProduct(index) {
+            const product = productsData[index];
+            const modal = document.getElementById('product-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+
+            modalTitle.textContent = 'Product Details';
+            modalBody.innerHTML = `
+                <div style="display: grid; gap: 1rem;">
+                    <div class="form-section">
+                        <h3 class="section-title">Product Information</h3>
+                        ${product.imageUrl ? `<div style="text-align: center; margin-bottom: 1rem;"><img src="${product.imageUrl}" alt="${product.name}" style="max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px;"></div>` : ''}
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div><strong>Name:</strong> ${product.name || 'N/A'}</div>
+                            <div><strong>Category:</strong> ${product.category || 'N/A'}</div>
+                            <div><strong>Price:</strong> $${product.price || 'N/A'}</div>
+                            <div><strong>Original Price:</strong> ${product.originalPrice ? '$' + product.originalPrice : 'N/A'}</div>
+                            <div><strong>Badge:</strong> ${product.badge || 'N/A'}</div>
+                            <div><strong>Stock:</strong> ${product.stock || 'N/A'}</div>
+                            <div><strong>Rating:</strong> ${product.rating || 'N/A'} ★</div>
+                            <div><strong>Reviews:</strong> ${product.reviews || 'N/A'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="section-title">Description</h3>
+                        <p style="line-height: 1.6;">${product.description || 'N/A'}</p>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
         function editProduct(index) {
-            const product = products[index];
+            const product = productsData[index];
             const modal = document.getElementById('product-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalBody = document.getElementById('modal-body');
@@ -1885,16 +2046,16 @@
                         <div class="form-row two-cols">
                             <div class="form-group">
                                 <label for="edit_product_name">Product Name <span class="required">*</span></label>
-                                <input type="text" id="edit_product_name" name="name" value="${product.Name}" required>
+                                <input type="text" id="edit_product_name" name="name" value="${product.name || ''}" required>
                             </div>
                             <div class="form-group">
                                 <label for="edit_product_category">Category <span class="required">*</span></label>
                                 <select id="edit_product_category" name="category" required>
                                     <option value="">Select Category</option>
-                                    <option value="men" ${product.Category === 'men' ? 'selected' : ''}>Men</option>
-                                    <option value="women" ${product.Category === 'women' ? 'selected' : ''}>Women</option>
-                                    <option value="kids" ${product.Category === 'kids' ? 'selected' : ''}>Kids</option>
-                                    <option value="accessories" ${product.Category === 'accessories' ? 'selected' : ''}>Accessories</option>
+                                    <option value="men" ${product.category === 'men' ? 'selected' : ''}>Men</option>
+                                    <option value="women" ${product.category === 'women' ? 'selected' : ''}>Women</option>
+                                    <option value="kids" ${product.category === 'kids' ? 'selected' : ''}>Kids</option>
+                                    <option value="accessories" ${product.category === 'accessories' ? 'selected' : ''}>Accessories</option>
                                 </select>
                             </div>
                         </div>
@@ -1902,18 +2063,18 @@
                         <div class="form-row two-cols">
                             <div class="form-group">
                                 <label for="edit_product_price">Price ($) <span class="required">*</span></label>
-                                <input type="number" id="edit_product_price" name="price" step="0.01" value="${product.Price}" required>
+                                <input type="number" id="edit_product_price" name="price" step="0.01" value="${product.price || ''}" required>
                             </div>
                             <div class="form-group">
                                 <label for="edit_product_original_price">Original Price ($)</label>
-                                <input type="number" id="edit_product_original_price" name="originalPrice" step="0.01" value="${product.OriginalPrice || ''}">
+                                <input type="number" id="edit_product_original_price" name="originalPrice" step="0.01" value="${product.originalPrice || ''}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="edit_product_description">Description <span class="required">*</span></label>
-                                <textarea id="edit_product_description" name="description" required>${product.Description}</textarea>
+                                <textarea id="edit_product_description" name="description" required>${product.description || ''}</textarea>
                             </div>
                         </div>
 
@@ -1922,25 +2083,25 @@
                                 <label for="edit_product_badge">Badge</label>
                                 <select id="edit_product_badge" name="badge">
                                     <option value="">No Badge</option>
-                                    <option value="Sale" ${product.Badge === 'Sale' ? 'selected' : ''}>Sale</option>
-                                    <option value="New" ${product.Badge === 'New' ? 'selected' : ''}>New</option>
-                                    <option value="Hot" ${product.Badge === 'Hot' ? 'selected' : ''}>Hot</option>
+                                    <option value="Sale" ${product.badge === 'Sale' ? 'selected' : ''}>Sale</option>
+                                    <option value="New" ${product.badge === 'New' ? 'selected' : ''}>New</option>
+                                    <option value="Hot" ${product.badge === 'Hot' ? 'selected' : ''}>Hot</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="edit_product_stock">Stock Quantity <span class="required">*</span></label>
-                                <input type="number" id="edit_product_stock" name="stock" value="${product.Stock}" required>
+                                <input type="number" id="edit_product_stock" name="stock" value="${product.stock || ''}" required>
                             </div>
                         </div>
 
                         <div class="form-row two-cols">
                             <div class="form-group">
                                 <label for="edit_product_rating">Rating (1-5) <span class="required">*</span></label>
-                                <input type="number" id="edit_product_rating" name="rating" min="1" max="5" step="0.1" value="${product.Rating}" required>
+                                <input type="number" id="edit_product_rating" name="rating" min="1" max="5" step="0.1" value="${product.rating || ''}" required>
                             </div>
                             <div class="form-group">
                                 <label for="edit_product_reviews">Reviews Count <span class="required">*</span></label>
-                                <input type="number" id="edit_product_reviews" name="reviews" value="${product.Reviews}" required>
+                                <input type="number" id="edit_product_reviews" name="reviews" value="${product.reviews || ''}" required>
                             </div>
                         </div>
 
@@ -1957,14 +2118,14 @@
                                         <div class="file-upload-hint">or click to browse (JPG, PNG, GIF - Max 10MB)</div>
                                     </div>
                                 </div>
-                                <div class="file-preview ${product.Image ? 'active' : ''}" id="edit-product-preview">
-                                    ${product.Image ? `
+                                <div class="file-preview ${product.imageUrl ? 'active' : ''}" id="edit-product-preview">
+                                    ${product.imageUrl ? `
                                         <div class="file-info">
                                             <div class="file-details">
                                                 <div class="file-icon"><i class="fas fa-image"></i></div>
                                                 <div>
                                                     <div class="file-name">Current Image</div>
-                                                    <div class="file-size"><a href="${product.Image}" target="_blank">View Current</a></div>
+                                                    <div class="file-size"><a href="${product.imageUrl}" target="_blank">View Current</a></div>
                                                 </div>
                                             </div>
                                             <div class="file-actions">
@@ -1981,7 +2142,7 @@
                                     </div>
                                     <div class="progress-text" id="edit-product-progress-text">Uploading...</div>
                                 </div>
-                                <input type="hidden" id="edit_product_image_url" name="imageUrl" value="${product.Image}">
+                                <input type="hidden" id="edit_product_image_url" name="imageUrl" value="${product.imageUrl || ''}">
                             </div>
                         </div>
                     </div>
@@ -2000,7 +2161,7 @@
                         </div>
 
                         <div class="message error-message" id="edit-error-message">
-                            <strong><i class="fas fa-exclamation-triangle"></i> Error!</strong>
+                            <strong><i class="fas fa-exclamation-triangle"></i> Update Error!</strong>
                             <span id="edit-error-text">There was an error updating the product.</span>
                         </div>
                     </div>
@@ -2011,37 +2172,37 @@
             modal.classList.add('active');
         }
 
-        // Initialize edit form
         function initializeEditForm() {
-    const editForm = document.getElementById('edit-product-form');
-    if (!editForm) return;
+            const editForm = document.getElementById('edit-product-form');
+            if (!editForm) return;
 
-    editForm.addEventListener('submit', handleEditProductSubmit);
-    
-    // Add validation for edit form
-    editForm.querySelectorAll('input[required], textarea[required], select[required]').forEach(field => {
-        field.addEventListener('blur', function() {
-            if (!this.value.trim()) {
-                this.classList.add('error');
-            } else {
-                this.classList.remove('error');
-            }
-        });
-        
-        field.addEventListener('input', function() {
-            if (this.classList.contains('error') && this.value.trim()) {
-                this.classList.remove('error');
-            }
-        });
-    });
-}
-        // Handle edit product form submission
-        async function handleEditProductSubmit(e) {
+            editForm.addEventListener('submit', handleEditFormSubmission);
+
+            editForm.querySelectorAll('input, textarea, select').forEach((field) => {
+                field.addEventListener('blur', function () {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.classList.add('error');
+                    } else {
+                        this.classList.remove('error');
+                    }
+                });
+
+                field.addEventListener('input', function () {
+                    if (this.classList.contains('error') && this.value.trim()) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
+
+            console.log('Edit form initialized');
+        }
+
+        async function handleEditFormSubmission(e) {
             e.preventDefault();
 
             const form = e.target;
             const index = parseInt(form.getAttribute('data-index'));
-            const originalProduct = products[index];
+            const originalData = productsData[index];
             
             const submitBtn = document.getElementById('edit-submit-btn');
             const loadingState = document.getElementById('edit-loading-state');
@@ -2051,145 +2212,194 @@
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
 
+            console.log('Edit form submission started for index:', index);
+            console.log('Original data:', originalData);
+
+            if (!validateEditForm(form)) {
+                console.log('Edit form validation failed');
+                return;
+            }
+
             submitBtn.disabled = true;
             loadingState.style.display = 'block';
 
             try {
-                const formData = new FormData(form);
-                const productData = Object.fromEntries(formData);
+                const data = {
+                    action: 'update',
+                    original_name: originalData.name
+                };
 
-                // Use updated image URL if available
-                const editImageUrl = document.getElementById('edit_product_image_url').value;
-                
-                if (editImageUrl) {
-                    productData.imageUrl = editImageUrl;
+                const formElements = form.elements;
+                for (let element of formElements) {
+                    if (element.name && element.type !== 'file') {
+                        data[element.name] = String(element.value || '').trim();
+                    }
                 }
 
-                // Add product ID
-                productData.ID = originalProduct.ID;
+                const editImageUrl = document.getElementById('edit_product_image_url').value;
+
+                data.imageUrl = editImageUrl || '';
+
+                console.log('Submitting update data:', data);
 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: new URLSearchParams({
-                        action: 'updateProduct',
-                        ...productData
-                    }).toString()
+                    body: new URLSearchParams(data).toString()
                 });
 
-                const result = await response.json();
+                console.log('Update response status:', response.status);
 
-                if (result.status === 'success') {
-                    loadingState.style.display = 'none';
-                    successMessage.style.display = 'block';
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Update response result:', result);
                     
-                    setTimeout(() => {
-                        closeModal();
-                        loadProducts();
-                        loadDashboardStats();
-                    }, 1500);
+                    if (result.status === 'success') {
+                        loadingState.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                        
+                        setTimeout(() => {
+                            closeModal();
+                            loadProductsData();
+                            loadDashboardData();
+                        }, 2000);
+                    } else {
+                        throw new Error(result.message || 'Update failed');
+                    }
                 } else {
-                    throw new Error(result.message);
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText}`);
                 }
 
             } catch (error) {
                 console.error('Update error:', error);
                 loadingState.style.display = 'none';
-                document.getElementById('edit-error-text').textContent = error.message;
+
+                document.getElementById('edit-error-text').textContent = 
+                    `Update failed: ${error.message}. Please check your internet connection and try again.`;
                 errorMessage.style.display = 'block';
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
             } finally {
                 submitBtn.disabled = false;
             }
         }
 
-        // Delete product
-        async function deleteProduct(productId) {
-            if (!confirm('Are you sure you want to delete this product?')) {
-                return;
-            }
+        function validateEditForm(form) {
+            const requiredFields = form.querySelectorAll('input[required], textarea[required], select[required]');
+            let isValid = true;
 
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({
-                        action: 'deleteProduct',
-                        id: productId
-                    }).toString()
-                });
+            form.querySelectorAll('.error').forEach(field => {
+                field.classList.remove('error');
+            });
 
-                const result = await response.json();
-
-                if (result.status === 'success') {
-                    alert('Product deleted successfully.');
-                    loadProducts();
-                    loadDashboardStats();
-                } else {
-                    throw new Error(result.message);
+            requiredFields.forEach((field) => {
+                const fieldValue = String(field.value || '').trim();
+                if (!fieldValue) {
+                    field.classList.add('error');
+                    isValid = false;
                 }
+            });
 
-            } catch (error) {
-                console.error('Error deleting product:', error);
-                alert('Error deleting product: ' + error.message);
-            }
+            return isValid;
         }
 
-        // Load orders
-        async function loadOrders() {
+        // Orders management
+        async function loadOrdersData() {
             const loading = document.getElementById('orders-loading');
             const tableContainer = document.getElementById('orders-table-container');
-            const noData = document.getElementById('no-orders');
+            const noOrders = document.getElementById('no-orders');
 
             try {
                 loading.classList.add('active');
                 tableContainer.style.display = 'none';
-                noData.style.display = 'none';
+                noOrders.style.display = 'none';
 
-                await loadOrdersFromCSV();
+                console.log('Fetching orders from:', ORDERS_CSV_URL);
+                
+                const response = await fetch(ORDERS_CSV_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
 
-                if (orders.length === 0) {
-                    noData.style.display = 'block';
+                const csvText = await response.text();
+                console.log('Orders CSV data received, length:', csvText.length);
+                
+                ordersData = parseCSV(csvText);
+                
+                console.log('Parsed orders:', ordersData.length);
+
+                if (ordersData.length === 0) {
+                    noOrders.style.display = 'block';
                 } else {
+                    updateOrdersStats();
                     renderOrdersTable();
                     tableContainer.style.display = 'block';
                 }
 
             } catch (error) {
                 console.error('Error loading orders:', error);
-                noData.style.display = 'block';
-                document.querySelector('#no-orders p').textContent = 'Error loading orders: ' + error.message;
+                noOrders.style.display = 'block';
+                document.querySelector('#no-orders p').textContent = 
+                    `Error loading orders: ${error.message}. Please check your connection and try again.`;
             } finally {
                 loading.classList.remove('active');
             }
         }
 
-        // Render orders table
+        function updateOrdersStats() {
+            const totalOrders = ordersData.length;
+            
+            // Calculate total revenue
+            let totalRevenue = 0;
+            let totalItems = 0;
+            
+            ordersData.forEach(order => {
+                const orderTotal = parseFloat(order.Total || order.total || 0);
+                totalRevenue += orderTotal;
+                
+                // Count items if available
+                if (order.Items || order.items) {
+                    try {
+                        const items = JSON.parse(order.Items || order.items);
+                        totalItems += items.length;
+                    } catch (e) {
+                        // If parsing fails, assume 1 item
+                        totalItems += 1;
+                    }
+                }
+            });
+
+            document.getElementById('total-orders').textContent = totalOrders;
+            document.getElementById('total-revenue').textContent = `$${totalRevenue.toFixed(2)}`;
+            document.getElementById('total-items').textContent = totalItems;
+        }
+
         function renderOrdersTable() {
             const tbody = document.getElementById('orders-table-body');
             tbody.innerHTML = '';
 
-            orders.forEach((order, index) => {
+            ordersData.forEach((order, index) => {
+                // Support different column name formats (capitalized or lowercase)
+                const orderId = order.OrderID || order['Order ID'] || order.orderId || (index + 1);
+                const customerName = order.CustomerName || order['Customer Name'] || order.customerName || order.Name || order.name || 'N/A';
+                const email = order.Email || order.email || 'N/A';
+                const phone = order.Phone || order.phone || 'N/A';
+                const address = order.Address || order.address || 'N/A';
+                const total = order.Total || order.total || '0.00';
+                const date = order.Date || order.date || order.Timestamp || order.timestamp || 'N/A';
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${order.OrderID}</td>
-                    <td>${order.CustomerName}</td>
-                    <td>${order.Email}</td>
-                    <td>${order.Phone}</td>
-                    <td>$${parseFloat(order.Total).toFixed(2)}</td>
-                    <td>
-                        <select onchange="updateOrderStatus('${order.OrderID}', this.value)" style="padding: 0.3rem 0.5rem; font-size: 0.75rem; border-radius: 4px; border: 1px solid var(--gray-300);">
-                            <option value="Pending" ${order.Status === 'Pending' ? 'selected' : ''}>Pending</option>
-                            <option value="Processing" ${order.Status === 'Processing' ? 'selected' : ''}>Processing</option>
-                            <option value="Shipped" ${order.Status === 'Shipped' ? 'selected' : ''}>Shipped</option>
-                            <option value="Delivered" ${order.Status === 'Delivered' ? 'selected' : ''}>Delivered</option>
-                            <option value="Cancelled" ${order.Status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
-                        </select>
-                    </td>
-                    <td>${new Date(order.Timestamp).toLocaleDateString()}</td>
+                    <td>${orderId}</td>
+                    <td>${customerName}</td>
+                    <td class="truncate-text" title="${email}">${email}</td>
+                    <td>${phone}</td>
+                    <td class="truncate-text" title="${address}">${address}</td>
+                    <td style="font-weight: 600; color: var(--success-color);">$${parseFloat(total).toFixed(2)}</td>
+                    <td>${formatDate(date)}</td>
                     <td class="actions">
                         <button class="action-icon view" onclick="viewOrder(${index})" title="View Details">
                             <i class="fas fa-eye"></i>
@@ -2200,99 +2410,109 @@
             });
         }
 
-        // Update order status
-        async function updateOrderStatus(orderId, status) {
+        function formatDate(dateString) {
+            if (!dateString || dateString === 'N/A') return 'N/A';
+            
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({
-                        action: 'updateOrderStatus',
-                        orderId: orderId,
-                        status: status
-                    }).toString()
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) return dateString;
+                
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
                 });
-
-                const result = await response.json();
-
-                if (result.status !== 'success') {
-                    throw new Error(result.message);
-                }
-
-                // Refresh dashboard stats
-                loadDashboardStats();
-
-            } catch (error) {
-                console.error('Error updating order status:', error);
-                alert('Error updating order status: ' + error.message);
+            } catch (e) {
+                return dateString;
             }
         }
 
-        // View order details
         function viewOrder(index) {
-            const order = orders[index];
+            const order = ordersData[index];
             const modal = document.getElementById('product-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalBody = document.getElementById('modal-body');
 
-            modalTitle.textContent = 'Order Details';
+            // Support different column name formats
+            const orderId = order.OrderID || order['Order ID'] || order.orderId || (index + 1);
+            const customerName = order.CustomerName || order['Customer Name'] || order.customerName || order.Name || order.name || 'N/A';
+            const email = order.Email || order.email || 'N/A';
+            const phone = order.Phone || order.phone || 'N/A';
+            const address = order.Address || order.address || 'N/A';
+            const total = order.Total || order.total || '0.00';
+            const date = order.Date || order.date || order.Timestamp || order.timestamp || 'N/A';
+            const items = order.Items || order.items || '';
+
+            modalTitle.textContent = `Order #${orderId} Details`;
+            
+            let itemsHtml = '';
+            if (items) {
+                try {
+                    const itemsArray = JSON.parse(items);
+                    itemsHtml = `
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-shopping-bag"></i> Order Items</h3>
+                            <div class="order-items-list">
+                                ${itemsArray.map(item => `
+                                    <div class="order-item">
+                                        <div class="order-item-info">
+                                            <div class="order-item-name">${item.name}</div>
+                                            <div class="order-item-details">Quantity: ${item.quantity}</div>
+                                        </div>
+                                        <div class="order-item-price">$${parseFloat(item.price).toFixed(2)}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                } catch (e) {
+                    itemsHtml = `
+                        <div class="form-section">
+                            <h3 class="section-title"><i class="fas fa-shopping-bag"></i> Order Items</h3>
+                            <p>${items}</p>
+                        </div>
+                    `;
+                }
+            }
+
             modalBody.innerHTML = `
                 <div style="display: grid; gap: 1rem;">
                     <div class="form-section">
-                        <h3 class="section-title">Customer Information</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
-                            <div><strong>Order ID:</strong> ${order.OrderID}</div>
-                            <div><strong>Customer Name:</strong> ${order.CustomerName}</div>
-                            <div><strong>Email:</strong> ${order.Email}</div>
-                            <div><strong>Phone:</strong> ${order.Phone}</div>
-                            <div><strong>Address:</strong> ${order.Address}</div>
-                            <div><strong>Total:</strong> $${parseFloat(order.Total).toFixed(2)}</div>
-                            <div><strong>Status:</strong> ${order.Status}</div>
-                            <div><strong>Date:</strong> ${new Date(order.Timestamp).toLocaleString()}</div>
+                        <h3 class="section-title"><i class="fas fa-user"></i> Customer Information</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div><strong>Name:</strong> ${customerName}</div>
+                            <div><strong>Email:</strong> ${email}</div>
+                            <div><strong>Phone:</strong> ${phone}</div>
+                            <div><strong>Order Date:</strong> ${formatDate(date)}</div>
                         </div>
                     </div>
                     
                     <div class="form-section">
-                        <h3 class="section-title">Products</h3>
-                        <div id="order-products-list">
-                            Loading products...
+                        <h3 class="section-title"><i class="fas fa-map-marker-alt"></i> Shipping Address</h3>
+                        <p style="line-height: 1.6;">${address}</p>
+                    </div>
+
+                    ${itemsHtml}
+                    
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fas fa-dollar-sign"></i> Order Total</h3>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--success-color); text-align: center;">
+
+                            $${parseFloat(total).toFixed(2)}
                         </div>
                     </div>
                 </div>
             `;
 
-            // Parse and display products
-            try {
-                const products = JSON.parse(order.Products);
-                let productsHtml = '<div style="display: grid; gap: 0.75rem;">';
-                products.forEach(item => {
-                    productsHtml += `
-                        <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--gray-50); border-radius: 6px;">
-                            <img src="${item.Image}" alt="${item.Name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
-                            <div>
-                                <div style="font-weight: 600; font-size: 0.85rem;">${item.Name}</div>
-                                <div style="font-size: 0.8rem;">$${parseFloat(item.Price).toFixed(2)} x ${item.quantity}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-                productsHtml += '</div>';
-                document.getElementById('order-products-list').innerHTML = productsHtml;
-            } catch (e) {
-                document.getElementById('order-products-list').innerHTML = 'Error parsing products.';
-            }
-
             modal.classList.add('active');
         }
 
-        // Close modal
         function closeModal() {
             document.getElementById('product-modal').classList.remove('active');
         }
 
-        // Close modal when clicking outside
         document.getElementById('product-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
@@ -2302,4 +2522,4 @@
         console.log('Admin panel initialized successfully');
     </script>
 </body>
-</html> 
+</html>
