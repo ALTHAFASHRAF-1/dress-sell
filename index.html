@@ -383,7 +383,7 @@
 
         /* Banner Section with Background Images */
         .banner {
-            margin-top: 0; /* Add this line */
+            margin-top: 5px; /* Add this line */
             color: white;
             padding: 0; /* Changed from 3.8rem 0 */
             min-height: auto; /* Changed from 25vh */
@@ -393,7 +393,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin-bottom: 0; /* Add this line */
+            margin: 70px 0 0 0; /* Add this - 70px is the nav height */
         }
         
         /* For desktop banner */
@@ -429,7 +429,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 1rem;
             color: #2c3e50;
             position: relative;
             padding-bottom: 10px;
@@ -1685,9 +1685,10 @@
             }
 
             .banner {
-        margin-top: 0;
+        margin: 60px 0 0 0; /* 60px for mobile nav height */
         padding: 0;
         min-height: auto;
+        
     }
 
             .desktop-banner {
@@ -1942,6 +1943,13 @@
                 height: auto;
             }
         }
+        
+        /* Hide nav-center on desktop only */
+@media (min-width: 769px) {
+    .nav-center {
+        display: none;
+    }
+}
 
     </style>
 </head>
@@ -2018,7 +2026,7 @@
     <!-- Products Section -->
     <section class="products" id="products">
         <div class="products-header">
-            <h2 class="section-title">Our Collection</h2>
+            <h2 class="section-title">Our Collections</h2>
             <div class="products-filters">
                 <!-- Category Dropdown -->
                 <div class="dropdown" id="categoryDropdownProducts">
