@@ -383,42 +383,36 @@
 
         /* Banner Section with Background Images */
         .banner {
+            margin-top: 0; /* Add this line */
             color: white;
-            padding: 3.8rem 0;
-            min-height: 25vh;
+            padding: 0; /* Changed from 3.8rem 0 */
+            min-height: auto; /* Changed from 25vh */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
             width: 100%;
+            margin-bottom: 0; /* Add this line */
         }
         
-        /* Desktop Banner Background */
-        .desktop-banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: auto;
-        }
+        /* For desktop banner */
+.desktop-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-        /* Mobile Banner Background - Hidden on desktop */
-        .mobile-banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: auto;
-        }
+/* For mobile banner */
+.mobile-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
         /* Products Section */
         .products {
-            padding: 40px 5%;
+            padding: 20px 5% 40px; /* Changed from 40px 5% */
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -429,7 +423,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
             gap: 20px;
         }
@@ -1691,11 +1685,10 @@
             }
 
             .banner {
-                margin-top: 0px;
-                height: 100%;
-                width: 100%;
-                overflow: hidden;
-            }
+        margin-top: 0;
+        padding: 0;
+        min-height: auto;
+    }
 
             .desktop-banner {
                 display: none;
@@ -1711,11 +1704,9 @@
                 height: auto;
             }
 
-            .products {
-                padding: 0px 3%;
-                width: 100%;
-                box-sizing: border-box;
-            }
+             .products {
+        padding: 15px 3% 30px; /* Reduced top padding on mobile */
+    }
 
             .products-header {
                 flex-direction: column;
@@ -1724,9 +1715,10 @@
                 width: 100%;
             }
 
-            .section-title {
-                font-size: 1.4rem;
-            }
+                .section-title {
+        margin-top: 5px; /* Add small margin if needed */
+    }
+
 
             .products-filters {
                 width: 100%;
