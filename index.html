@@ -42,6 +42,20 @@
 
         .logo-section {
             display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #667eea;
+        }
+
+        .logo-text {
+            display: flex;
             flex-direction: column;
             gap: 2px;
         }
@@ -138,7 +152,7 @@
 
         .nav-icons {
             display: flex;
-            gap: 15px;
+            gap: 2px;
             align-items: center;
         }
 
@@ -367,88 +381,36 @@
 
         /* Banner Section with Background Images */
         .banner {
-            margin-top: 70px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
+            color: white;
+    padding: 2rem 0;
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
         }
+        
+        
 
-        /* Desktop Banner Background - Hidden on mobile */
+        /* Desktop Banner Background */
         .desktop-banner {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -2;
+            
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
         }
 
         /* Mobile Banner Background - Hidden on desktop */
         .mobile-banner {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -2;
-        }
-
-        /* Overlay for better text readability */
-        .banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: -1;
-        }
-
-        .banner-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-
-        .banner-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: 700;
-        }
-
-        .banner-content p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .banner-btn {
-            padding: 12px 35px;
-            background: #fff;
-            color: #667eea;
-            border: none;
-            border-radius: 30px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .banner-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+           
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
         }
 
         /* Products Section */
@@ -458,31 +420,43 @@
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
             color: #2c3e50;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
+            margin: 0;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 100px;
             height: 4px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 2px;
         }
 
-        /* Product Grid - Reduced spacing */
+        .products-filters {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Product Grid - 5 columns on desktop */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 15px;
         }
 
@@ -560,11 +534,10 @@
         }
 
         .product-info {
-            padding: 10px 12px; /* Reduced padding */
+            padding: 10px 12px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            min-height: 120px; /* Fixed minimum height */
         }
 
         .product-category {
@@ -573,13 +546,14 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
-            margin-bottom: 4px; /* Reduced margin */
+            margin-bottom: 3px;
+            line-height: 1.2;
         }
 
         .product-name {
             font-size: 13px;
             font-weight: bold;
-            margin-bottom: 6px; /* Reduced margin */
+            margin-bottom: 3px;
             color: #2c3e50;
             line-height: 1.3;
             display: -webkit-box;
@@ -594,8 +568,9 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            margin-bottom: 6px; /* Reduced margin */
+            margin-bottom: 3px;
             font-size: 11px;
+            line-height: 1.2;
         }
 
         .stars {
@@ -612,7 +587,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 8px; /* Reduced margin */
+            margin-bottom: 6px;
+            line-height: 1.2;
         }
 
         .current-price {
@@ -1680,53 +1656,29 @@
                 height: 60px;
             }
 
+            .logo-image {
+                width: 38px;
+                height: 38px;
+            }
+
             .logo {
-                font-size: 24px;
+                font-size: 20px;
             }
 
             .tagline {
-                font-size: 9px;
+                font-size: 8px;
                 letter-spacing: 1px;
             }
 
             /* Show dropdowns in mobile view */
             .nav-center {
-                display: flex;
-                gap: 10px;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: #fff;
-                padding: 10px 4%;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                z-index: 1000;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .dropdown {
-                flex: 1;
-                min-width: 45%;
-            }
-
-            .dropdown-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .dropdown-content {
-                bottom: auto;
-                top: 100%;
-                min-width: 100%;
+                display: none;
             }
 
             /* Banner - Switch to mobile image */
             .banner {
-                margin-top: 100px; /* Account for dropdowns */
-                min-height: 300px;
+                margin-top: 0px;
+                height: 100%;
             }
 
             .desktop-banner {
@@ -1737,21 +1689,36 @@
                 display: block;
             }
 
-            .banner-content h1 {
-                font-size: 1.8rem;
+            .products {
+                padding: 30px 4%;
             }
 
-            .banner-content p {
-                font-size: 0.95rem;
-            }
-
-            .banner-btn {
-                padding: 10px 25px;
-                font-size: 13px;
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
+            }
+
+            .products-filters {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .products-filters .dropdown {
+                flex: 0 0 auto;
+            }
+
+            .products-filters .dropdown-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .dropdown-content {
+                bottom: auto;
+                top: 100%;
             }
 
             .product-grid {
@@ -1765,22 +1732,21 @@
 
             .product-info {
                 padding: 8px 10px;
-                min-height: 110px;
             }
 
             .product-name {
                 font-size: 12px;
                 min-height: 31px;
-                margin-bottom: 4px;
+                margin-bottom: 3px;
             }
 
             .product-rating {
-                margin-bottom: 4px;
+                margin-bottom: 3px;
                 font-size: 10px;
             }
 
             .product-price {
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
 
             .current-price {
@@ -1875,27 +1841,29 @@
         @media (max-width: 480px) {
             .product-info {
                 padding: 8px;
-                min-height: 100px;
             }
 
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
+        }
 
-            .dropdown {
-                min-width: 100%;
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        @media (max-width: 360px) {
-            .nav-center {
-                flex-direction: column;
-                gap: 8px;
+        @media (min-width: 1201px) and (max-width: 1400px) {
+            .product-grid {
+                grid-template-columns: repeat(5, 1fr);
             }
-            
-            .dropdown {
-                width: 100%;
+        }
+
+        @media (min-width: 1401px) {
+            .product-grid {
+                grid-template-columns: repeat(5, 1fr);
             }
         }
     </style>
@@ -1905,8 +1873,11 @@
     <header>
         <nav>
             <div class="logo-section">
-                <a href="https://dqdhiu.netlify.app/logo.png" class="logo">Grace</a>
-                <div class="tagline">Quality Clothes</div>
+                <img src="https://dqdhiu.netlify.app/logo.png" alt="Grace Logo" class="logo-image">
+                <div class="logo-text">
+                    <a href="#" class="logo">Grace</a>
+                    <div class="tagline">Quality Clothes</div>
+                </div>
             </div>
 
             <div class="nav-center">
@@ -1965,19 +1936,44 @@
         <img src="https://dqdhiu.netlify.app/desktop-banner.jpg" alt="Desktop Banner" class="desktop-banner">
         <!-- Mobile Banner -->
         <img src="https://dqdhiu.netlify.app/mobile-banner.jpg" alt="Mobile Banner" class="mobile-banner">
-        
-        <div class="banner-content">
-            <h1>Discover Your Style</h1>
-            <p>Premium Quality Clothing for Everyone</p>
-            <button class="banner-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
-                Shop Now
-            </button>
-        </div>
     </section>
 
     <!-- Products Section -->
     <section class="products" id="products">
-        <h2 class="section-title">Our Collection</h2>
+        <div class="products-header">
+            <h2 class="section-title">Our Collection</h2>
+            <div class="products-filters">
+                <!-- Category Dropdown -->
+                <div class="dropdown" id="categoryDropdownProducts">
+                    <button class="dropdown-btn">
+                        <i class="fas fa-th-large"></i>
+                        <span>Categories</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item active" data-filter="all">All Products</div>
+                        <div class="dropdown-item" data-filter="men">Men</div>
+                        <div class="dropdown-item" data-filter="women">Women</div>
+                        <div class="dropdown-item" data-filter="kids">Kids</div>
+                    </div>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="dropdown" id="sortDropdownProducts">
+                    <button class="dropdown-btn">
+                        <i class="fas fa-sort-amount-down"></i>
+                        <span>Sort By</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item active" data-sort="featured">Featured</div>
+                        <div class="dropdown-item" data-sort="price-low">Price: Low to High</div>
+                        <div class="dropdown-item" data-sort="price-high">Price: High to Low</div>
+                        <div class="dropdown-item" data-sort="newest">Newest First</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="product-grid" id="productGrid">
             <!-- Products will be loaded here by JavaScript -->
@@ -2061,10 +2057,6 @@
             <div class="menu-item" onclick="scrollToSection('home')">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
-            </div>
-            <div class="menu-item" onclick="scrollToSection('about')">
-                <i class="fas fa-info-circle"></i>
-                <span>About</span>
             </div>
             <div class="menu-item" onclick="scrollToSection('contact')">
                 <i class="fas fa-envelope"></i>
@@ -2850,38 +2842,49 @@
     document.addEventListener('DOMContentLoaded', () => {
         loadProducts();
         
-        // Dropdowns
-        document.getElementById('categoryDropdown').addEventListener('click', function(e) {
-            e.stopPropagation();
-            this.classList.toggle('active');
-            document.getElementById('sortDropdown').classList.remove('active');
-        });
+        // Setup dropdowns for both nav and products section
+        function setupDropdowns(categoryId, sortId) {
+            const categoryDropdown = document.getElementById(categoryId);
+            const sortDropdown = document.getElementById(sortId);
 
-        document.getElementById('sortDropdown').addEventListener('click', function(e) {
-            e.stopPropagation();
-            this.classList.toggle('active');
-            document.getElementById('categoryDropdown').classList.remove('active');
-        });
-
-        // Category filter
-        document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('#categoryDropdown .dropdown-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.dataset.filter;
-                displayProducts();
+            categoryDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+                sortDropdown.classList.remove('active');
             });
-        });
 
-        // Sort filter
-        document.querySelectorAll('#sortDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('#sortDropdown .dropdown-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-                currentSort = this.dataset.sort;
-                displayProducts();
+            sortDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+                categoryDropdown.classList.remove('active');
             });
-        });
+
+            // Category filter
+            categoryDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Update all category dropdowns
+                    document.querySelectorAll('[id^="categoryDropdown"] .dropdown-item').forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll(`[data-filter="${this.dataset.filter}"]`).forEach(i => i.classList.add('active'));
+                    currentFilter = this.dataset.filter;
+                    displayProducts();
+                });
+            });
+
+            // Sort filter
+            sortDropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Update all sort dropdowns
+                    document.querySelectorAll('[id^="sortDropdown"] .dropdown-item').forEach(i => i.classList.remove('active'));
+                    document.querySelectorAll(`[data-sort="${this.dataset.sort}"]`).forEach(i => i.classList.add('active'));
+                    currentSort = this.dataset.sort;
+                    displayProducts();
+                });
+            });
+        }
+
+        // Setup both sets of dropdowns
+        setupDropdowns('categoryDropdown', 'sortDropdown');
+        setupDropdowns('categoryDropdownProducts', 'sortDropdownProducts');
 
         // Close dropdowns when clicking outside
         document.addEventListener('click', () => {
