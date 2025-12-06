@@ -6,7 +6,7 @@
     <title>Grace - Fashion World</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-                * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -111,10 +111,10 @@
 
         .dropdown-content {
             position: absolute;
-            bottom: -140px;
+            bottom: -120px;
             left: 0;
             background: #fff;
-            min-width: 100px;
+            min-width: 180px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             border-radius: 10px;
             opacity: 0;
@@ -132,10 +132,10 @@
         }
 
         .dropdown-item {
-            padding: 5px 20px;
+            padding: 12px 20px;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: 50;
+            font-weight: 500;
             color: #000000;
             border-bottom: 1px solid #f0f0f0;
         }
@@ -221,6 +221,7 @@
             max-height: 80vh;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .search-header {
@@ -240,14 +241,28 @@
         }
 
         .close-search {
-            font-size: 28px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             cursor: pointer;
             color: #666;
             transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .close-search:hover {
-            color: #e74c3c;
+            color: #fff;
+            background: #e74c3c;
+            border-color: #e74c3c;
             transform: rotate(90deg);
         }
 
@@ -332,6 +347,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .side-menu-header h2 {
@@ -339,15 +355,26 @@
         }
 
         .close-menu {
-            font-size: 28px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             cursor: pointer;
-            border: none;
-            background: none;
             color: #fff;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .close-menu:hover {
+            background: #fff;
+            color: #667eea;
             transform: rotate(90deg);
         }
 
@@ -379,38 +406,36 @@
             width: 25px;
         }
 
-        /* Banner Section with Background Images */
+        /* Banner Section */
         .banner {
-            margin-top: 5px; /* Add this line */
+            margin-top: 5px;
             color: white;
-            padding: 0; /* Changed from 3.8rem 0 */
-            min-height: auto; /* Changed from 25vh */
+            padding: 0;
+            min-height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin: 70px 0 0 0; /* Add this - 70px is the nav height */
+            margin: 70px 0 0 0;
         }
         
-        /* For desktop banner */
-.desktop-banner {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        .desktop-banner {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-/* For mobile banner */
-.mobile-banner {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        .mobile-banner {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
         /* Products Section */
         .products {
-            padding: 20px 5% 40px; /* Changed from 40px 5% */
+            padding: 20px 5% 60px;
             max-width: 1400px;
             margin: 0 auto;
             width: 100%;
@@ -421,13 +446,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 20px;
         }
 
         .section-title {
-            font-size: 1rem;
+            font-size: 1.8rem;
             color: #2c3e50;
             position: relative;
             padding-bottom: 10px;
@@ -450,7 +475,7 @@
             gap: 15px;
         }
 
-        /* Product Grid - 5 columns on desktop */
+        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -649,6 +674,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .cart-header h2 {
@@ -659,15 +685,26 @@
         }
 
         .close-cart {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 24px;
             cursor: pointer;
-            border: none;
-            background: none;
             color: #fff;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .close-cart:hover {
+            background: #fff;
+            color: #667eea;
             transform: rotate(90deg);
         }
 
@@ -838,25 +875,27 @@
             position: absolute;
             top: 15px;
             right: 15px;
+            width: 45px;
+            height: 45px;
             background: #fff;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #333;
-            z-index: 1;
-            transition: all 0.3s;
-            width: 40px;
-            height: 40px;
+            border: 2px solid #e9ecef;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            z-index: 1;
+            transition: all 0.3s;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
         .close-modal:hover {
+            color: #fff;
+            background: #e74c3c;
+            border-color: #e74c3c;
             transform: rotate(90deg);
-            color: #e74c3c;
         }
 
         .modal-body {
@@ -920,67 +959,6 @@
             line-height: 1.6;
             color: #555;
             font-size: 14px;
-        }
-
-        .size-selector, .color-selector {
-            margin-bottom: 20px;
-        }
-
-        .size-selector h3, .color-selector h3 {
-            margin-bottom: 10px;
-            font-size: 1rem;
-            color: #2c3e50;
-        }
-
-        .size-options, .color-options {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .size-option, .color-option {
-            padding: 8px 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .size-option:hover, .size-option.active {
-            border-color: #667eea;
-            background: #667eea;
-            color: #fff;
-        }
-
-        .color-option {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            position: relative;
-            padding: 0;
-        }
-
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-
-        .color-option.active {
-            border-color: #333;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
-        }
-
-        .color-option.active::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            text-shadow: 0 0 3px rgba(0,0,0,0.5);
         }
 
         .modal-actions {
@@ -1068,6 +1046,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
             border-radius: 15px 15px 0 0;
+            position: relative;
         }
 
         .checkout-header h2 {
@@ -1075,6 +1054,30 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .close-checkout {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .close-checkout:hover {
+            background: #fff;
+            color: #667eea;
+            transform: rotate(90deg);
         }
 
         .checkout-body {
@@ -1328,6 +1331,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .profile-header h2 {
@@ -1338,15 +1342,26 @@
         }
 
         .close-profile {
-            font-size: 28px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             cursor: pointer;
-            border: none;
-            background: none;
             color: #fff;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .close-profile:hover {
+            background: #fff;
+            color: #667eea;
             transform: rotate(90deg);
         }
 
@@ -1515,6 +1530,7 @@
             color: #fff;
             padding: 50px 5% 25px;
             width: 100%;
+            margin-top: 60px;
         }
 
         .footer-content {
@@ -1632,17 +1648,17 @@
         .loading {
             display: none;
             text-align: center;
-            padding: 60px;
+            padding: 40px;
         }
 
         .spinner {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #667eea;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            width: 40px;
+            height: 40px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
         }
 
         @keyframes spin {
@@ -1683,11 +1699,10 @@
             }
 
             .banner {
-        margin: 60px 0 0 0; /* 60px for mobile nav height */
-        padding: 0;
-        min-height: auto;
-        
-    }
+                margin: 60px 0 0 0;
+                padding: 0;
+                min-height: auto;
+            }
 
             .desktop-banner {
                 display: none;
@@ -1703,9 +1718,9 @@
                 height: auto;
             }
 
-             .products {
-        padding: 15px 3% 30px; /* Reduced top padding on mobile */
-    }
+            .products {
+                padding: 15px 3% 40px;
+            }
 
             .products-header {
                 flex-direction: column;
@@ -1714,10 +1729,10 @@
                 width: 100%;
             }
 
-                .section-title {
-        margin-top: 5px; /* Add small margin if needed */
-    }
-
+            .section-title {
+                font-size: 1.3rem;
+                margin-top: 5px;
+            }
 
             .products-filters {
                 width: 100%;
@@ -1869,6 +1884,10 @@
                 padding: 0 3%;
             }
 
+            footer {
+                margin-top: 40px;
+            }
+
             .search-container {
                 width: 95%;
                 margin: 0 2.5%;
@@ -1890,7 +1909,7 @@
             }
 
             .products {
-                padding: 1px 2%;
+                padding: 15px 2% 30px;
             }
 
             .product-info {
@@ -1905,6 +1924,10 @@
             .success-content,
             .profile-content {
                 margin: 0 5px;
+            }
+
+            footer {
+                margin-top: 30px;
             }
         }
 
@@ -1926,7 +1949,6 @@
             }
         }
 
-        /* Additional mobile fixes */
         @media (max-width: 768px) {
             html {
                 overflow-x: hidden;
@@ -1941,14 +1963,6 @@
                 height: auto;
             }
         }
-        
-        /* Hide nav-center on desktop only */
-@media (min-width: 769px) {
-    .nav-center {
-        display: none;
-    }
-}
-
     </style>
 </head>
 <body>
@@ -1964,21 +1978,6 @@
             </div>
 
             <div class="nav-center">
-                <!-- Category Dropdown -->
-                <div class="dropdown" id="categoryDropdown">
-                    <button class="dropdown-btn">
-                        <i class="fas fa-th-large"></i>
-                        <span>Categories</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="dropdown-item active" data-filter="all">All Products</div>
-                        <div class="dropdown-item" data-filter="men">Men</div>
-                        <div class="dropdown-item" data-filter="women">Women</div>
-                        <div class="dropdown-item" data-filter="kids">Kids</div>
-                    </div>
-                </div>
-
                 <!-- Sort Dropdown -->
                 <div class="dropdown" id="sortDropdown">
                     <button class="dropdown-btn">
@@ -2013,11 +2012,9 @@
         </nav>
     </header>
 
-    <!-- Banner Section with Background Images -->
+    <!-- Banner Section -->
     <section class="banner" id="home">
-        <!-- Desktop Banner -->
         <img src="pcbanner.png" alt="Desktop Banner" class="desktop-banner">
-        <!-- Mobile Banner -->
         <img src="mbanner.png" alt="Mobile Banner" class="mobile-banner">
     </section>
 
@@ -2026,21 +2023,6 @@
         <div class="products-header">
             <h2 class="section-title">Our Collections</h2>
             <div class="products-filters">
-                <!-- Category Dropdown -->
-                <div class="dropdown" id="categoryDropdownProducts">
-                    <button class="dropdown-btn">
-                        <i class="fas fa-th-large"></i>
-                        <span>Categories</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="dropdown-item active" data-filter="all">All Products</div>
-                        <div class="dropdown-item" data-filter="men">Men</div>
-                        <div class="dropdown-item" data-filter="women">Women</div>
-                        <div class="dropdown-item" data-filter="kids">Kids</div>
-                    </div>
-                </div>
-
                 <!-- Sort Dropdown -->
                 <div class="dropdown" id="sortDropdownProducts">
                     <button class="dropdown-btn">
@@ -2111,8 +2093,8 @@
             <div class="search-header">
                 <i class="fas fa-search" style="font-size: 20px; color: #667eea;"></i>
                 <input type="text" class="search-input" id="searchInput" placeholder="Search for products...">
-                <button class="close-search" id="closeSearch">&times;</button>
             </div>
+            <button class="close-search" id="closeSearch">&times;</button>
             <div class="search-results" id="searchResults">
                 <div class="no-results">
                     <i class="fas fa-search"></i>
@@ -2188,26 +2170,6 @@
                         Premium quality product with excellent craftsmanship and attention to detail.
                     </p>
                     
-                    <div class="size-selector">
-                        <h3>Select Size</h3>
-                        <div class="size-options">
-                            <div class="size-option active">S</div>
-                            <div class="size-option">M</div>
-                            <div class="size-option">L</div>
-                            <div class="size-option">XL</div>
-                        </div>
-                    </div>
-                    
-                    <div class="color-selector">
-                        <h3>Select Color</h3>
-                        <div class="color-options">
-                            <div class="color-option active" style="background-color: #000;"></div>
-                            <div class="color-option" style="background-color: #667eea;"></div>
-                            <div class="color-option" style="background-color: #e74c3c;"></div>
-                            <div class="color-option" style="background-color: #27ae60;"></div>
-                        </div>
-                    </div>
-                    
                     <div class="modal-actions">
                         <button class="add-to-cart-btn" id="modalAddToCart">
                             <i class="fas fa-shopping-cart"></i>
@@ -2227,6 +2189,7 @@
         <div class="checkout-content">
             <div class="checkout-header">
                 <h2><i class="fas fa-shopping-bag"></i> Checkout</h2>
+                <button class="close-checkout" id="closeCheckout">&times;</button>
             </div>
             <form id="checkoutForm">
                 <div class="checkout-body">
@@ -2333,7 +2296,6 @@
     // Global variables
     let cart = [];
     let products = [];
-    let currentFilter = 'all';
     let currentSort = 'featured';
     let currentProductId = null;
     let generatedOrderId = '';
@@ -2359,7 +2321,6 @@
                 throw new Error('No products found in CSV');
             }
             
-            console.log('Products loaded:', products.length);
             displayProducts();
             
         } catch (error) {
@@ -2437,11 +2398,7 @@
         const productGrid = document.getElementById('productGrid');
         productGrid.innerHTML = '';
 
-        let filteredProducts = currentFilter === 'all' 
-            ? products 
-            : products.filter(p => p.Category.toLowerCase() === currentFilter.toLowerCase());
-
-        filteredProducts = sortProducts(filteredProducts, currentSort);
+        let filteredProducts = sortProducts(products, currentSort);
 
         if (filteredProducts.length === 0) {
             productGrid.innerHTML = `
@@ -2454,10 +2411,12 @@
             return;
         }
 
+        const fragment = document.createDocumentFragment();
         filteredProducts.forEach(product => {
             const productCard = createProductCard(product);
-            productGrid.appendChild(productCard);
+            fragment.appendChild(productCard);
         });
+        productGrid.appendChild(fragment);
     }
 
     function sortProducts(productsArray, sortBy) {
@@ -2672,8 +2631,6 @@
 
     async function submitOrder(orderData) {
         try {
-            console.log('Submitting order:', orderData);
-            
             const params = new URLSearchParams({
                 action: 'submitOrder',
                 orderId: orderData.orderId,
@@ -2736,7 +2693,6 @@
             const csvText = await response.text();
             const orders = parseOrdersCSV(csvText);
             
-            // Filter orders by phone number
             const userOrders = orders.filter(order => order.phone === phone);
 
             if (userOrders.length === 0) {
@@ -2750,9 +2706,7 @@
                 return;
             }
 
-            // Display orders with raw products data
             orderResults.innerHTML = userOrders.map(order => {
-                // Display the raw products data from CSV
                 const productsRaw = order.products || '';
                 
                 return `
@@ -2815,7 +2769,6 @@
             if (values.length >= headers.length) {
                 const row = {};
                 headers.forEach((header, index) => {
-                    // Keep the raw value, don't trim quotes
                     row[header] = values[index] || '';
                 });
                 
@@ -2917,38 +2870,17 @@
     document.addEventListener('DOMContentLoaded', () => {
         loadProducts();
         
-        // Setup dropdowns for both nav and products section
-        function setupDropdowns(categoryId, sortId) {
-            const categoryDropdown = document.getElementById(categoryId);
+        // Setup dropdowns
+        function setupDropdowns(sortId) {
             const sortDropdown = document.getElementById(sortId);
-
-            categoryDropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.classList.toggle('active');
-                sortDropdown.classList.remove('active');
-            });
 
             sortDropdown.addEventListener('click', function(e) {
                 e.stopPropagation();
                 this.classList.toggle('active');
-                categoryDropdown.classList.remove('active');
             });
 
-            // Category filter
-            categoryDropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    // Update all category dropdowns
-                    document.querySelectorAll('[id^="categoryDropdown"] .dropdown-item').forEach(i => i.classList.remove('active'));
-                    document.querySelectorAll(`[data-filter="${this.dataset.filter}"]`).forEach(i => i.classList.add('active'));
-                    currentFilter = this.dataset.filter;
-                    displayProducts();
-                });
-            });
-
-            // Sort filter
             sortDropdown.querySelectorAll('.dropdown-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // Update all sort dropdowns
                     document.querySelectorAll('[id^="sortDropdown"] .dropdown-item').forEach(i => i.classList.remove('active'));
                     document.querySelectorAll(`[data-sort="${this.dataset.sort}"]`).forEach(i => i.classList.add('active'));
                     currentSort = this.dataset.sort;
@@ -2957,11 +2889,9 @@
             });
         }
 
-        // Setup both sets of dropdowns
-        setupDropdowns('categoryDropdown', 'sortDropdown');
-        setupDropdowns('categoryDropdownProducts', 'sortDropdownProducts');
+        setupDropdowns('sortDropdown');
+        setupDropdowns('sortDropdownProducts');
 
-        // Close dropdowns when clicking outside
         document.addEventListener('click', () => {
             document.querySelectorAll('.dropdown').forEach(dropdown => {
                 dropdown.classList.remove('active');
@@ -3004,7 +2934,7 @@
             document.getElementById('sideMenu').classList.remove('active');
         });
 
-        // Profile - Track Orders
+        // Profile
         document.getElementById('profileIcon').addEventListener('click', () => {
             document.getElementById('profileModal').classList.add('active');
         });
@@ -3041,21 +2971,6 @@
             }
         });
 
-        // Size and color selection
-        document.querySelectorAll('.size-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.size-option').forEach(o => o.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        document.querySelectorAll('.color-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
         // Buy Now
         document.getElementById('buyNowBtn').addEventListener('click', () => {
             if (cart.length === 0) {
@@ -3067,6 +2982,10 @@
         });
 
         // Checkout modal
+        document.getElementById('closeCheckout').addEventListener('click', () => {
+            document.getElementById('checkoutModal').classList.remove('active');
+        });
+
         document.getElementById('checkoutModal').addEventListener('click', (e) => {
             if (e.target === document.getElementById('checkoutModal')) {
                 document.getElementById('checkoutModal').classList.remove('active');
@@ -3160,4 +3079,4 @@
     });
 </script>
 </body>
-</html> 
+</html>
