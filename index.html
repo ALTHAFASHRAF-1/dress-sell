@@ -37,21 +37,6 @@
             </div>
 
             <div class="nav-center">
-                <!-- Category Dropdown -->
-                <div class="dropdown" id="categoryDropdown">
-                    <button class="dropdown-btn">
-                        <i class="fas fa-th-large"></i>
-                        <span>Categories</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="dropdown-item active" data-filter="all">All Products</div>
-                        <div class="dropdown-item" data-filter="men">Men</div>
-                        <div class="dropdown-item" data-filter="women">Women</div>
-                        <div class="dropdown-item" data-filter="kids">Kids</div>
-                    </div>
-                </div>
-
                 <!-- Sort Dropdown -->
                 <div class="dropdown" id="sortDropdown">
                     <button class="dropdown-btn">
@@ -86,11 +71,9 @@
         </nav>
     </header>
 
-    <!-- Banner Section with Background Images -->
+    <!-- Banner Section -->
     <section class="banner" id="home">
-        <!-- Desktop Banner -->
         <img src="pcbanner.png" alt="Desktop Banner" class="desktop-banner">
-        <!-- Mobile Banner -->
         <img src="mbanner.png" alt="Mobile Banner" class="mobile-banner">
     </section>
 
@@ -99,21 +82,6 @@
         <div class="products-header">
             <h2 class="section-title">Our Collections</h2>
             <div class="products-filters">
-                <!-- Category Dropdown -->
-                <div class="dropdown" id="categoryDropdownProducts">
-                    <button class="dropdown-btn">
-                        <i class="fas fa-th-large"></i>
-                        <span>Categories</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="dropdown-item active" data-filter="all">All Products</div>
-                        <div class="dropdown-item" data-filter="men">Men</div>
-                        <div class="dropdown-item" data-filter="women">Women</div>
-                        <div class="dropdown-item" data-filter="kids">Kids</div>
-                    </div>
-                </div>
-
                 <!-- Sort Dropdown -->
                 <div class="dropdown" id="sortDropdownProducts">
                     <button class="dropdown-btn">
@@ -167,9 +135,9 @@
             <div class="footer-section">
                 <h3>Contact Info</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i>Mumbai</li>
-                    <li><i class="fas fa-phone"></i> +919867972296</li>
-                    <li><i class="fas fa-envelope"></i>gracetheultimatechoice@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, NY 10001</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-envelope"></i> info@grace.com</li>
                 </ul>
             </div>
         </div>
@@ -184,8 +152,8 @@
             <div class="search-header">
                 <i class="fas fa-search" style="font-size: 20px; color: #667eea;"></i>
                 <input type="text" class="search-input" id="searchInput" placeholder="Search for products...">
-                <button class="close-search" id="closeSearch">&times;</button>
             </div>
+            <button class="close-search" id="closeSearch">&times;</button>
             <div class="search-results" id="searchResults">
                 <div class="no-results">
                     <i class="fas fa-search"></i>
@@ -261,26 +229,6 @@
                         Premium quality product with excellent craftsmanship and attention to detail.
                     </p>
                     
-                    <div class="size-selector">
-                        <h3>Select Size</h3>
-                        <div class="size-options">
-                            <div class="size-option active">S</div>
-                            <div class="size-option">M</div>
-                            <div class="size-option">L</div>
-                            <div class="size-option">XL</div>
-                        </div>
-                    </div>
-                    
-                    <div class="color-selector">
-                        <h3>Select Color</h3>
-                        <div class="color-options">
-                            <div class="color-option active" style="background-color: #000;"></div>
-                            <div class="color-option" style="background-color: #667eea;"></div>
-                            <div class="color-option" style="background-color: #e74c3c;"></div>
-                            <div class="color-option" style="background-color: #27ae60;"></div>
-                        </div>
-                    </div>
-                    
                     <div class="modal-actions">
                         <button class="add-to-cart-btn" id="modalAddToCart">
                             <i class="fas fa-shopping-cart"></i>
@@ -300,6 +248,7 @@
         <div class="checkout-content">
             <div class="checkout-header">
                 <h2><i class="fas fa-shopping-bag"></i> Checkout</h2>
+                <button class="close-checkout" id="closeCheckout">&times;</button>
             </div>
             <form id="checkoutForm">
                 <div class="checkout-body">
@@ -396,6 +345,7 @@
 
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
+
 
 </body>
 </html> 
